@@ -1,0 +1,51 @@
+.error > input {
+    border: 1px red solid;
+}
+
+.error {
+    position: relative;
+}
+
+.error::before {
+    content: attr(data-validate);
+    position: absolute;
+    max-width: 70%;
+    background-color: hsl(65, 46%, 84%);
+    border: 1px solid #c80000;
+    border-radius: 13px;
+    padding: 4px 25px 4px 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8%;
+    pointer-events: none;
+    color: #c80000;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  
+  .error::after {
+    content: "!";
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    color: #c80000;
+    font-size: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
+  }
+  
+  .error:hover:before {
+    visibility: visible;
+    opacity: 1;
+  }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

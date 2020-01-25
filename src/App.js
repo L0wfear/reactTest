@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Users from './components/Users/UsersContainer';
+import { connect } from 'react-redux';
+import ChooseData from './components/ChooseData/ChooseData';
 
-function App() {
+
+function App(props) {
+
+  if(!props.isData) {
+    return (
+      <div className="container">
+        <ChooseData />
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Users />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isData: state.isData.isData
+  }
+}
+
+export default connect(mapStateToProps)(App);
